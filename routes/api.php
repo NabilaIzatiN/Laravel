@@ -1,6 +1,7 @@
 <?php
-
+use App\Http\Controllers\Api\GroupsController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Api\homeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('', [homeController::class, 'index']);
+Route::resources([
+    'friends' => homeController::class,
+    'groups' => GroupsController::class,
+]);
